@@ -41,6 +41,9 @@ Page({
   },
   handleVideoItemClick(event) {
     const id = event.currentTarget.dataset.item.id
+    wx: wx.navigateTo({
+      url: `/pages/detail-video/index?id=${id}`
+    })
     console.log(id)
   },
   // 其他的生命周期回调函数
