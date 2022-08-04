@@ -10,7 +10,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    mvURLInfo: {},
+    mvDetail: {},
+    relatedVideos: []
   },
 
   /**
@@ -18,7 +20,27 @@ Page({
    */
   onLoad(options) {
     const id = options.id
-    console.log(id)
+    this.getPageData(id)
+  },
+
+  getPageData(id) {
+    getMVURL(id).then(res => {
+      this.setData({
+        mvURLInfo: res.data
+      })
+    })
+
+    getMVDetail(id).then(res => {
+      this.setData({
+        mvDetail: res.data
+      })
+    })
+
+    getRelatedVideo(id).then(res => {
+      this.setData({
+        relatedVideos: res.data
+      })
+    })
   },
 
   /**
